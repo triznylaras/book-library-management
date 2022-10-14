@@ -1,0 +1,28 @@
+<h1>Books</h1>
+
+<ul>
+  <table>
+  <tr>
+    <th>Judul</th>
+    <th>Penulis</th>
+    <th>Tanggal Peminjaman</th>
+    <th>Tanggal Pengembalian</th>
+  </tr>
+  <% @books.each do |book| %>
+    <tr>
+      <td>
+        <%= book.title %>
+      </td>
+      <td>
+        <%= book.author %>
+      </td>
+      <td>
+        <%= (book.borrow_time).to_date %>
+      </td>
+      <td>
+        <%= (book.return_due_date).to_date %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</ul>
