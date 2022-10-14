@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  borrow_time: 2022-10-14 21:15:29
+  return_due_date: 2022-10-14 21:15:29
+
+two:
+  title: MyString
+  author: MyString
+  borrow_time: 2022-10-14 21:15:29
+  return_due_date: 2022-10-14 21:15:29

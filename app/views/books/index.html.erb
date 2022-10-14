@@ -1,6 +1,14 @@
-<h1>Books</h1>
+<h1>Perpustakaan Sekolah</h1>
+<h2>Daftar</h2>
 
-<ul>
+<body>
+  <h3>Apakah Anda ingin menambahkan transaksi peminjaman buku terbaru? <%= link_to 'Klik Disini', books_new_path %></h3>
+
+  <%= search_field_tag :search, params[:search], placeholder: "Ketik Nama Buku" , :required => true %>  
+    <%= button_tag do%> 
+  <%= t('Cari Buku')%>
+  <% end %>
+
   <table>
   <tr>
     <th>Judul</th>
@@ -25,4 +33,4 @@
     </tr>
   <% end %>
   </table>
-</ul>
+</body>
