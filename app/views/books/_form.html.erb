@@ -13,22 +13,22 @@
 
     <div class="field">
       <%= form.label "Judul Buku:" %> <br>
-      <%= form.text_field :title %> <br><br>
+      <%= form.text_field :title, required: true%> <br><br>
     </div>
 
     <div class="field">
       <%= form.label "Penulis Buku:" %> <br>
-      <%= form.text_field :author %> <br><br>
+      <%= form.text_field :author, required: true%> <br><br>
     </div>
     
     <div class="field">
       <%= form.label "Tanggal Peminjaman:" %> <br>
-      <%= form.date_field :borrow_time %> <br><br>
+      <%= form.date_field :borrow_time, required: true%> <br><br>
     </div>
     
     <div class="field">
       <%= form.label "Tanggal Pengembalian:" %> <br>
-      <%= form.date_field :return_due_date %> <br><br>
+      <%= form.date_field :return_due_date, required: true%> <br><br>
     </div>
     
     <div class="actions">
