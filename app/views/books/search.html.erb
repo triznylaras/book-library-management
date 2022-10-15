@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hasil Pencarian</h1>
+
+  <p>
+    <strong>Kata Kunci</strong>
+    <div><%= params[:search_by] %>: <%= params[:search] %></div> 
+  </p>
+
+  <table>
+  <tr>
+    <th>Judul</th>
+    <th>Penulis</th>
+    <th>Tanggal Peminjaman</th>
+    <th>Tanggal Pengembalian</th>
+  </tr>
+  <% @results.each do |book| %>
+    <tr>
+      <td>
+        <%= book.title %>
+      </td>
+      <td>
+        <%= book.author %>
+      </td>
+      <td>
+        <%= (book.borrow_time).to_date %>
+      </td>
+      <td>
+        <%= (book.return_due_date).to_date %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
