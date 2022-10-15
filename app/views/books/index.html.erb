@@ -1,13 +1,13 @@
-<h1>Perpustakaan Sekolah</h1>
-<h2>Daftar</h2>
+<h1>Perpustakaan Sekolah</h1><br>
+<h2>Apakah Anda ingin menambahkan transaksi peminjaman buku terbaru? <%= link_to 'Klik Disini', new_book_path %></h2><br><br>
 
 <body>
-  <h3>Apakah Anda ingin menambahkan transaksi peminjaman buku terbaru? <%= link_to 'Klik Disini', books_new_path %></h3>
+  <h2>Daftar Buku Yang Dipinjam</h2>
 
-  <%= search_field_tag :search, params[:search], placeholder: "Ketik Nama Buku" , :required => true %>  
+  <%= search_field_tag :search, params[:search], placeholder: "Masukkan Judul Buku" , required: true %>  
     <%= button_tag do%> 
-  <%= t('Cari Buku')%>
-  <% end %>
+    <%= t('Cari Buku')%>
+    <% end %>
 
   <table>
   <tr>
