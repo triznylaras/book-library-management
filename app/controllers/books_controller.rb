@@ -25,7 +25,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: "Book was successfully added." }
+        format.html { redirect_to book_url(@book), notice: "Data transaksi peminjaman buku berhasil ditambahkan." }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,18 +37,18 @@ class BooksController < ApplicationController
   def search
     @books = Book.all
 
-	  case params[:search_by]
-	  when 'title'
-			@results = @books.where("lower(title) LIKE ?", "%#{params[:search].downcase}%")
+    case params[:search_by]
+    when 'title'
+      @results = @books.where("lower(title) LIKE ?", "%#{params[:search].downcase}%")
     when 'author'
-			@results = @books.where("lower(author) LIKE ?", "%#{params[:search].downcase}%")
-	  when 'borrow_time' 
-			@results = @books.where("lower(borrow_time) LIKE ?", "%#{params[:search].downcase}%")
+      @results = @books.where("lower(author) LIKE ?", "%#{params[:search].downcase}%")
+    when 'borrow_time'
+      @results = @books.where("lower(borrow_time) LIKE ?", "%#{params[:search].downcase}%")
     when 'return__due_date'
-			@results = @books.where("lower(return_due_date) LIKE ?", "%#{params[:search].downcase}%")
-	  else
-			redirect_to('index', alert: "Empty field!")
-	  end
+      @results = @books.where("lower(return_due_date) LIKE ?", "%#{params[:search].downcase}%")
+    else
+      redirect_to('index', alert: "Empty field!")
+    end
   end
 
   private

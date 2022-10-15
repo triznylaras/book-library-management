@@ -1,20 +1,27 @@
-<h1>Perpustakaan Sekolah</h1><br>
+<h1>Perpustakaan Galuh</h1><br>
 <h2>Apakah Anda ingin menambahkan transaksi peminjaman buku terbaru? <%= link_to 'Klik Disini', new_book_path %></h2><br><br>
 
 <body>
   <h2>Daftar Buku Yang Dipinjam</h2>
 
-    <strong>Cari berdasarkan:</strong>
+  <strong>Cari berdasarkan:</strong>
 
   <%= form_tag(search_path, :method => "get" , :required => true) do %> 
-    <%= radio_button_tag(:search_by, "title", checked: true,) %>Judul
+    <%= radio_button_tag(:search_by, "title", checked: true) %>Judul
     <%= radio_button_tag(:search_by, "author")%>Penulis
     <%= radio_button_tag(:search_by, "borrow_time")%>Tanggal Peminjaman
     <%= radio_button_tag(:search_by, "return_due_date")%>Tanggal Pengembalian</p>
-    <%= search_field_tag :search, params[:search], placeholder: "Masukkan Kata Kunci", required: true %>  
-      <%= button_tag do%> 
-      <%= t('Cari Buku')%>
-      <% end %>
+    <% if radio_button_tag(:search_by, "title", checked: true) || radio_button_tag(:search_by, "title", checked: true) %>
+      <%= search_field_tag :search, params[:search], placeholder: "Masukkan Kata Kunci", required: true %>  
+        <%= button_tag do%> 
+        <%= t('Cari Buku')%>
+        <% end %>
+    <% else %>
+      <%= date_field :search, params[:search], required: true %>  
+        <%= button_tag do%> 
+        <%= t('Cari Buku')%>
+        <% end %>
+    <% end %>
   <% end %>
 
   <table>
