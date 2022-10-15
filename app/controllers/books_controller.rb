@@ -1,20 +1,25 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
+  # GET /books or /books.json
   def index
     @books = Book.all
   end
 
+  # GET /books/new
   def new
     @book = Book.new
   end
 
+  # GET /books/1 or /books/1.json
   def show
   end
 
+  # GET /books/1/edit
   def edit
   end
 
+  # POST /books or /books.json
   def create
     @book = Book.new(book_params)
 
@@ -27,6 +32,23 @@ class BooksController < ApplicationController
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+    @books = Book.all
+
+	  case params[:search_by]
+	  when 'title'
+			@results = @books.where("lower(title) LIKE ?", "%#{params[:search].downcase}%")
+    when 'author'
+			@results = @books.where("lower(author) LIKE ?", "%#{params[:search].downcase}%")
+	  when 'borrow_time' 
+			@results = @books.where("lower(borrow_time) LIKE ?", "%#{params[:search].downcase}%")
+    when 'return__due_date'
+			@results = @books.where("lower(return_due_date) LIKE ?", "%#{params[:search].downcase}%")
+	  else
+			redirect_to('index', alert: "Empty field!")
+	  end
   end
 
   private
