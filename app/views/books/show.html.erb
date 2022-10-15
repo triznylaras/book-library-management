@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Judul Buku:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Penulis:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Tanggal Peminjaman:</strong>
+  <%= @book.borrow_time %>
+</p>
+
+<p>
+  <strong>Tanggal Pengembalian:</strong>
+  <%= @book.return_due_date %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Kembali', books_path %>
