@@ -3,8 +3,18 @@
 <h1>Hasil Pencarian</h1>
 
   <p>
-    <strong>Kata Kunci</strong>
-    <div><%= params[:search_by] %>: <%= params[:search] %></div> 
+    <strong>Kata Kunci:</strong>
+
+    <% case params[:search_by] %>
+    <% when 'title' %>
+      <div>Judul: <%= params[:search] %></div>
+    <% when 'author' %>
+      <div>Penulis: <%= params[:search] %></div>
+    <% when 'borrow_time' %>
+      <div>Tanggal Peminjaman: <%= params[:search] %></div>
+    <% when 'return_due_date' %>
+      <div>Tanggal Pengembalian: <%= params[:search] %></div>
+    <% end %>
   </p>
 
   <table>
@@ -31,3 +41,5 @@
     </tr>
   <% end %>
   </table>
+
+  <%= link_to 'Kembali', books_path %>
