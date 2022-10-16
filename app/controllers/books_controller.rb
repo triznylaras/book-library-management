@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.all.order('return_due_date ASC')
   end
 
   # GET /books/new
@@ -25,7 +25,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: "Data transaksi peminjaman buku berhasil ditambahkan." }
+        format.html { redirect_to book_url(@book), notice: "Data transaksi peminjaman buku berhasil ditambahkan!" }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
