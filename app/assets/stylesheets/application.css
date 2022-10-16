@@ -15,10 +15,10 @@
  */
 :root {
   padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1, h2 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: left;
   width: 100%;
 }
