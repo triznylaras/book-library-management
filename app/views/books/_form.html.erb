@@ -23,12 +23,12 @@
     
     <div class="field">
       <%= form.label "Tanggal Peminjaman:" %> <br>
-      <%= form.date_field :borrow_time, required: true%> <br><br>
+      <%= form.date_field :borrow_time, max: Date.today, required: true%> <br><br>
     </div>
     
     <div class="field">
       <%= form.label "Tanggal Pengembalian:" %> <br>
-      <%= form.date_field :return_due_date, required: true%> <br><br>
+      <%= form.date_field :return_due_date, min: Date.today, required: true%> <br><br>
     </div>
     
     <div class="actions">
