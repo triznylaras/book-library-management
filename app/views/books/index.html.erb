@@ -1,28 +1,27 @@
 <h1>Perpustakaan Galuh</h1><br>
 <h2>Apakah Anda ingin menambahkan transaksi peminjaman buku terbaru? <%= link_to 'Klik Disini', new_book_path %></h2><br><br>
+<head>
+  <style>
+    #book-row-mark td { background-color: red; }
+  </style>
+</head>
 
 <body>
   <h2>Daftar Buku Yang Dipinjam</h2>
+
+  <strong>*Baris berwarna merah menandakan buku yang sudah melewati batas akhir Tanggal Pengembalian</strong><br><br>
 
   <strong>Cari berdasarkan:</strong>
 
   <%= form_tag(search_path, :method => "get" , :required => true) do %> 
     <%= radio_button_tag(:search_by, "title", checked: true) %>Judul
-    <%= radio_button_tag(:search_by, "author")%>Penulis
-    <%= radio_button_tag(:search_by, "borrow_time")%>Tanggal Peminjaman
-    <%= radio_button_tag(:search_by, "return_due_date")%>Tanggal Pengembalian</p>
-    <% if radio_button_tag(:search_by, "title", checked: true) || radio_button_tag(:search_by, "title", checked: true) %>
-      <%= search_field_tag :search, params[:search], placeholder: "Masukkan Kata Kunci", required: true %>  
-        <%= button_tag do%> 
-        <%= t('Cari Buku')%>
-        <% end %>
-    <% else %>
-      <%= date_field :search, params[:search], required: true %>  
-        <%= button_tag do%> 
-        <%= t('Cari Buku')%>
-        <% end %>
-    <% end %>
-  <% end %>
+    <%= radio_button_tag(:search_by, "author")%>Penulis</p>
+    
+    <%= search_field_tag :search, params[:search], placeholder: "Masukkan Kata Kunci", required: true %>  
+      <%= button_tag do%> 
+      <%= t('Cari Buku')%>
+      <% end %>
+  <% end %></p>
 
   <table>
   <tr>
@@ -32,7 +31,7 @@
     <th>Tanggal Pengembalian</th>
   </tr>
   <% @books.each do |book| %>
-    <tr>
+    <tr id="<%= 'book-row-mark' if book.return_due_date.past? %>">
       <td>
         <%= book.title %>
       </td>
@@ -40,10 +39,10 @@
         <%= book.author %>
       </td>
       <td>
-        <%= (book.borrow_time).to_date %>
+        <%= (book.borrow_time).to_date.strftime("%d - %m - %Y") %>
       </td>
       <td>
-        <%= (book.return_due_date).to_date %>
+        <%= (book.return_due_date).to_date.strftime("%d - %m - %Y") %>
       </td>
     </tr>
   <% end %>
